@@ -194,3 +194,54 @@ class Queue {
 // implement queue using stacks
 // queue first in first out
 // stack last in first out, redo
+// store queue like stack
+// push and pop also follow stack rule but looks like enqueue dequeue
+// assume 2 secenarios
+// one: store like a stack and delete based on stack rules
+// eg, 1,2,3,4,5, to store it in stack, has to be 5,4,3,2,1 so that 1 can be pop directly, meet queue and stack rules
+
+// lets store it like stack first
+// using 2 stack container to hold it
+
+// need to set an class first
+
+class QueueOne {
+  constructor() {
+    // use 2 stacks
+    this.stackOne = [];
+    this.stackTwo = [];
+  }
+  enqueue(x) {
+    // x is the inserting element
+
+    // first senario, no ele
+    let stackOne = this.stackOne;
+    let stackTwo = this.stackTwo;
+    if (stackOne.length === 0) {
+      stackOne.push(x);
+      return x;
+    }
+
+    // already has stored ele in order in stack one,[4,3,2,1] in stack structure last in first out, queue, first in first out
+    // in queue has to be stored like [x,4,3,2,1],so that can be used as pop later
+
+    while (stackOne.length) {
+      stackTwo.push(stackOne.pop());
+      //stackTwo become[1,2,3,4]
+    }
+    stackTwo.push(x);
+    //stackTwo become[1,2,3,4,x]
+
+    // need to store the structure back to meet the pop rules of queue,first in, first out
+
+    while (stackTwo.length) {
+      stackOne.push(stackTwo.pop());
+    }
+    //stackOne[x,4,3,2,1]
+  }
+
+  dequeue() {
+    let stackOne = this.stackOne;
+    stackOne.pop();
+  }
+}
