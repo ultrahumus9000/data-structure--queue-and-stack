@@ -131,14 +131,6 @@ class Stack {
 }
 
 const myStack = new Stack();
-myStack.peek();
-myStack.push("google");
-myStack.push("udemy");
-myStack.push("discord");
-myStack.peek();
-myStack.pop();
-myStack.pop();
-myStack.pop();
 
 class Stack {
   constructor() {
@@ -245,3 +237,4 @@ class QueueOne {
     stackOne.pop();
   }
 }
+// second senario, push the stackone in order the delete fron stackone by transfer data to stacktwo first the stacktwo pop
